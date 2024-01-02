@@ -33,7 +33,8 @@ class HomePage extends StatelessWidget {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
             // Get current user
-            // final user = FirebaseAuth.instance.currentUser;
+            final user = FirebaseAuth.instance.currentUser;
+
             // print(user);
             // if (user?.emailVerified ?? false) {
             //   // print("You are verified");
@@ -48,7 +49,18 @@ class HomePage extends StatelessWidget {
             // }
             // -> after verify, just log in once more to make sure
             /// firebase update it's database
-            return const LoginView();
+
+            if (user != null) {
+              if (user.emailVerified) {
+                print("Email is verified");
+              } else {
+                return const VerifyEmailView();
+              }
+            } else {
+              return const LoginView();
+            }
+
+            return const Text("Done");
           default:
             return const CircularProgressIndicator();
         }
