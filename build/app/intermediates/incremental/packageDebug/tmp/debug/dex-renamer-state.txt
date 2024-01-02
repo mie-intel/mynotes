@@ -1,4 +1,4 @@
-#Mon Jan 01 13:26:03 WIB 2024
+#Tue Jan 02 21:19:49 WIB 2024
 base.0=D\:\\SOSKOD\\course\\flutter\\chapter_7_first_project\\mynotes\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 base.1=D\:\\SOSKOD\\course\\flutter\\chapter_7_first_project\\mynotes\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
 base.2=D\:\\SOSKOD\\course\\flutter\\chapter_7_first_project\\mynotes\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
