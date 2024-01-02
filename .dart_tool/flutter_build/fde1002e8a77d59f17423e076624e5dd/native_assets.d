@@ -1,0 +1,1 @@
+ D:\\SOSKOD\\course\\flutter\\chapter_7_first_project\\mynotes\\.dart_tool\\flutter_build\\fde1002e8a77d59f17423e076624e5dd\\native_assets.yaml: 

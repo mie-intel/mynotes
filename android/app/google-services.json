@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "785303760120",
+    "project_id": "mynotes-flutter-papmie",
+    "storage_bucket": "mynotes-flutter-papmie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785303760120:android:1ab239e3f4ed2d26a49f0d",
+        "android_client_info": {
+          "package_name": "id.polikarpsus.mynotes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVMg1qR3Gg_4D3Oaa8lnxdN4SJVe__XLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

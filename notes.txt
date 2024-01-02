@@ -1,0 +1,111 @@
+Notes (09:26:33)
+
+Command
+    flutter create --org id.<domain name> <application name>
+                   ^^^^^
+                   kalo mau punya perusahaan
+
+pubspec.yaml
+    version: 1.0.0+1 -> version
+        left: major version
+        middle: minor idea
+        right: build number
+
+    environtment:
+        sdk: software development kit
+            define what version of sdk should work in this source code
+    
+    dependencies:
+        If the dependencies written by organizations, it may be continously grow
+        if by single person, then prioritize it down below, because it may be not continued 
+
+        website to search flutter dependencies => pub.dev
+
+        list of dependencies:
+            cupertino_icons
+
+        flutter:
+            sdk: flutter
+    
+    dev_dependencies
+        dependencies that used in development
+
+dependencies for development
+    adding dependencies:
+        firebase_core, firebase_auth, cloud_firestore, firebase_analytics
+
+    firebase_core       = kernel, the server
+    firebase_auth       = user register, log in, log out, email verification
+    cloud_firestore     = where we store the user log
+    firebase_analytics  = to get free analytics what user see
+
+    command:
+        flutter pub add <dependencies>
+
+To run the app on phone while coding it, we can use Scrcpy
+
+adb (Android Debug Bridge)
+    debug tool to communicate with the phone
+
+    Steps
+        1. connect the phone with the usb
+        2. check if it is connected using 'adb devices'
+        3. if it is unauthorized, do these following Steps
+            1. Revoke USB Debugging on phone (go to the developer settings)
+            2. Restart ADB server
+                adb kill-server
+                adb start-server
+            3. Reconnect the devices
+            4. It should be authorized now!
+    
+    with adb, we cant use Scrcpy
+
+    adb location C:/Users/Asus/AppData/Local/Android/Sdk/platform-tools
+
+To run using Scrcpy
+    run
+        Scrcpy
+    
+    if and error occured, paste this on 'build.gradle'
+        android {
+            defaultConfig {
+                ...
+                // Enabling multidex support.
+                multiDexEnabled true
+            }
+            ...
+        }
+
+        dependencies {
+          implementation 'androidx.multidex:multidex:2.0.1'  //with androidx libraries
+          //implementation 'com.android.support:multidex:1.0.3'  //with support libraries
+        }
+    
+    Disable screen sleeping
+
+Configure firebase project
+    install flutterfire
+    
+    then
+        firebase login
+        flutterfire.bat configure
+            notes => don't forget to create unique id
+        
+    For this project, the project id are
+        Platform  Firebase App Id
+        android   1:785303760120:android:1ab239e3f4ed2d26a49f0d
+        ios       1:785303760120:ios:6aa421b57ebbfc49a49f0d
+
+Hot reload vs Hot Restart
+    hot reload it can show any changes but doesn't restart the application you make after it is saved
+    hot restart -> show any changes but everything is restarted. Rebuild the application
+
+Statefull, stateless
+Scafold => basic building structure
+
+Configuration not found
+    => allow email and password authentification on firebase
+
+Widget flutter binding
+    Future builder => do the Future
+        then return a widget on builder
