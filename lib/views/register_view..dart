@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mynotes/firebase_options.dart';
+import 'dart:developer' as devtools;
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -62,16 +63,16 @@ class _RegisterViewState extends State<RegisterView> {
                       .createUserWithEmailAndPassword(
                           email: email, password: password);
 
-                  print(userCredential);
+                  devtools.log(userCredential.toString());
                 } on FirebaseAuthException catch (e) {
-                  print("Ohh Exception catchy");
+                  devtools.log("Ohh Exception catchy");
                   if (e.code == "weak-password") {
-                    print("Your password so weak");
+                    devtools.log("Your password so weak");
                   } // invalid-credential
                   else if (e.code == "email-already-in-use") {
-                    print("Your email is exist already");
+                    devtools.log("Your email is exist already");
                   } else if (e.code == "invalid-email") {
-                    print("Your email is invalid");
+                    devtools.log("Your email is invalid");
                   }
                 }
               },
@@ -81,10 +82,12 @@ class _RegisterViewState extends State<RegisterView> {
                 // destroy everything on the screen
                 // and change it with build function
                 // so it needs a new scaffold
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil("/login/", (route) => false);
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  "/login/",
+                  (route) => false,
+                );
               },
-              child: const Text("Already registered? Log in here!"))
+              child: const Text("Already registered? log in here!"))
         ],
       ),
     );
