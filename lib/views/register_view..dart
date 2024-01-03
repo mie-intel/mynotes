@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mynotes/constants/routes.dart';
 import 'package:mynotes/firebase_options.dart';
 import 'dart:developer' as devtools;
 
@@ -83,7 +84,7 @@ class _RegisterViewState extends State<RegisterView> {
                 // and change it with build function
                 // so it needs a new scaffold
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                  "/login/",
+                  loginRoute,
                   (route) => false,
                 );
               },

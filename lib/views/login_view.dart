@@ -1,6 +1,7 @@
 import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
+import "package:mynotes/constants/routes.dart";
 import "package:mynotes/firebase_options.dart";
 import "dart:developer" as devtools;
 
@@ -67,7 +68,7 @@ class _LoginViewState extends State<LoginView> {
                   );
                   // ignore: use_build_context_synchronously
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                    "/notes/",
+                    notesRoute,
                     (route) => false,
                   );
                   // devtools.log(userCredential.toString());
@@ -92,7 +93,7 @@ class _LoginViewState extends State<LoginView> {
                 // and change it with build function
                 // so it needs a new scaffold
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                  "/register/",
+                  registerRoute,
                   (route) =>
                       false, // remove everything. don't care about the routes.
                   // just go to the register view
