@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:mynotes/constants/routes.dart";
 import "package:mynotes/firebase_options.dart";
 import "dart:developer" as devtools;
+import "package:mynotes/utilities/show_error_dialog.dart";
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -75,15 +76,38 @@ class _LoginViewState extends State<LoginView> {
                 } on FirebaseAuthException catch (e) {
                   devtools.log("Ohh Exception catchy");
                   devtools.log(e.code); // invalid-credential
+                  // ignore: use_build_context_synchronously
+
                   if (e.code == "invalid-credential") {
                     devtools.log("user not found!");
+                    // ignore: use_build_context_synchronously
+                    await showErrorDialog(
+                      context,
+                      "Error: ${e.code.split('-').join(' ')}",
+                    );
+                  } else if (e.code == "channel-error") {
+                    // ignore: use_build_context_synchronously
+                    await showErrorDialog(
+                      context,
+                      "Error: Please insert you credential",
+                    );
                   } else {
                     devtools.log("Something Else Happen");
+                    // ignore: use_build_context_synchronously
+                    await showErrorDialog(
+                      context,
+                      "Error: ${e.code.split('-').join(' ')}",
+                    );
                   }
                 } catch (e) {
                   devtools.log("Somethin' bad happen");
                   devtools.log(e.runtimeType.toString()); // show class
                   devtools.log(e.toString());
+                  // ignore: use_build_context_synchronously
+                  await showErrorDialog(
+                    context,
+                    "Error: ${e.toString()}",
+                  );
                 }
               },
               child: const Text('Login')),
