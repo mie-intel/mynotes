@@ -3,6 +3,7 @@ import 'package:mynotes/services/auth/auth_user.dart';
 // return currentUser
 // create abstract class to replace firebase class
 abstract class AuthProvider {
+  Future<void> initialize();
   AuthUser? get currentUser;
   // If cannot return, throw error
   Future<AuthUser> logIn({

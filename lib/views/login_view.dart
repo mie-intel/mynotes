@@ -1,8 +1,7 @@
-import "package:firebase_auth/firebase_auth.dart";
-import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:mynotes/constants/routes.dart";
-import "package:mynotes/firebase_options.dart";
+import "package:mynotes/services/auth/auth_exceptions.dart";
+import "package:mynotes/services/auth/auth_service.dart";
 import "dart:developer" as devtools;
 import "package:mynotes/utilities/show_error_dialog.dart";
 
@@ -63,13 +62,13 @@ class _LoginViewState extends State<LoginView> {
 
                 try {
                   // final userCredential =
-                  await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  await AuthService.firebase().logIn(
                     email: email,
                     password: password,
                   );
 
-                  final user = FirebaseAuth.instance.currentUser;
-                  if (user?.emailVerified ?? false) {
+                  final user = AuthService.firebase().currentUser;
+                  if (user?.isEmailVerified ?? false) {
                     // user's email is verified
                     // ignore: use_build_context_synchronously
                     Navigator.of(context).pushNamedAndRemoveUntil(
@@ -84,42 +83,23 @@ class _LoginViewState extends State<LoginView> {
                       (route) => false,
                     );
                   }
-
-                  // devtools.log(userCredential.toString());
-                } on FirebaseAuthException catch (e) {
-                  devtools.log("Ohh Exception catchy");
-                  devtools.log(e.code); // invalid-credential
-                  // ignore: use_build_context_synchronously
-
-                  if (e.code == "invalid-credential") {
-                    devtools.log("user not found!");
-                    // ignore: use_build_context_synchronously
-                    await showErrorDialog(
-                      context,
-                      "Error: ${e.code.split('-').join(' ')}",
-                    );
-                  } else if (e.code == "channel-error") {
-                    // ignore: use_build_context_synchronously
-                    await showErrorDialog(
-                      context,
-                      "Error: Please insert you credential",
-                    );
-                  } else {
-                    devtools.log("Something Else Happen");
-                    // ignore: use_build_context_synchronously
-                    await showErrorDialog(
-                      context,
-                      "Error: ${e.code.split('-').join(' ')}",
-                    );
-                  }
-                } catch (e) {
-                  devtools.log("Somethin' bad happen");
-                  devtools.log(e.runtimeType.toString()); // show class
-                  devtools.log(e.toString());
+                } on UserNotFoundAuthException {
                   // ignore: use_build_context_synchronously
                   await showErrorDialog(
                     context,
-                    "Error: ${e.toString()}",
+                    "Error: User not found!",
+                  );
+                } on WrongPasswordAuthException {
+                  // ignore: use_build_context_synchronously
+                  await showErrorDialog(
+                    context,
+                    "Error: Wrong credentials!",
+                  );
+                } on GenericAuthException {
+                  // ignore: use_build_context_synchronously
+                  await showErrorDialog(
+                    context,
+                    "Error: Authentification Error!",
                   );
                 }
               },

@@ -1,8 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mynotes/constants/routes.dart';
-import 'package:mynotes/firebase_options.dart';
+import 'package:mynotes/services/auth/auth_exceptions.dart';
+import 'package:mynotes/services/auth/auth_service.dart';
 import 'dart:developer' as devtools;
 
 import 'package:mynotes/utilities/show_error_dialog.dart';
@@ -62,9 +61,11 @@ class _RegisterViewState extends State<RegisterView> {
                 final password = _password.text;
 
                 try {
-                  final userCredential = await FirebaseAuth.instance
-                      .createUserWithEmailAndPassword(
-                          email: email, password: password);
+                  final userCredential =
+                      await AuthService.firebase().createUser(
+                    email: email,
+                    password: password,
+                  );
                   // ignore: use_build_context_synchronously
                   // go to verify email
                   // Navigator.of(context).pushNamed(
@@ -73,8 +74,7 @@ class _RegisterViewState extends State<RegisterView> {
                   //   verifyEmailRoute,
                   // );
                   // another way, send directly after register
-                  final user = FirebaseAuth.instance.currentUser;
-                  await user?.sendEmailVerification();
+                  AuthService.firebase().sendEmailVerification();
                   // ignore: use_build_context_synchronously
                   Navigator.of(context).pushNamed(
                     // I can verify of not
@@ -82,42 +82,29 @@ class _RegisterViewState extends State<RegisterView> {
                     verifyEmailRoute,
                   );
                   devtools.log(userCredential.toString());
-                } on FirebaseAuthException catch (e) {
-                  devtools.log("Ohh Exception catchy");
-                  if (e.code == "weak-password") {
-                    // ignore: use_build_context_synchronously
-                    await showErrorDialog(
-                      context,
-                      "Weak password",
-                    );
-                    devtools.log("Your password so weak");
-                  } // invalid-credential
-                  else if (e.code == "email-already-in-use") {
-                    // ignore: use_build_context_synchronously
-                    await showErrorDialog(
-                      context,
-                      "Email is already in use",
-                    );
-                    devtools.log("Your email is exist already");
-                  } else if (e.code == "invalid-email") {
-                    // ignore: use_build_context_synchronously
-                    await showErrorDialog(
-                      context,
-                      "Invalid email address",
-                    );
-                    devtools.log("Your email is invalid");
-                  } else {
-                    // ignore: use_build_context_synchronously
-                    await showErrorDialog(
-                      context,
-                      "Error: ${e.code}",
-                    );
-                  }
-                } catch (e) {
+                } on WeakPasswordAuthException {
                   // ignore: use_build_context_synchronously
                   await showErrorDialog(
                     context,
-                    "Error: ${e.toString()}",
+                    "Error: weak password",
+                  );
+                } on EmailAlreadyInUseAuthException {
+                  // ignore: use_build_context_synchronously
+                  await showErrorDialog(
+                    context,
+                    "Error: email in use",
+                  );
+                } on InvalidEmailAuthException {
+                  // ignore: use_build_context_synchronously
+                  await showErrorDialog(
+                    context,
+                    "Error: This is invalid email address",
+                  );
+                } on GenericAuthException {
+                  // ignore: use_build_context_synchronously
+                  await showErrorDialog(
+                    context,
+                    "Error: Failed to register",
                   );
                 }
               },
