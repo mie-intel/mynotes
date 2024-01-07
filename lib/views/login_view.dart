@@ -68,11 +68,23 @@ class _LoginViewState extends State<LoginView> {
                     password: password,
                   );
 
-                  // ignore: use_build_context_synchronously
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    notesRoute,
-                    (route) => false,
-                  );
+                  final user = FirebaseAuth.instance.currentUser;
+                  if (user?.emailVerified ?? false) {
+                    // user's email is verified
+                    // ignore: use_build_context_synchronously
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      notesRoute,
+                      (route) => false,
+                    );
+                  } else {
+                    // user's email is not verified
+                    // ignore: use_build_context_synchronously
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      verifyEmailRoute,
+                      (route) => false,
+                    );
+                  }
+
                   // devtools.log(userCredential.toString());
                 } on FirebaseAuthException catch (e) {
                   devtools.log("Ohh Exception catchy");
@@ -113,18 +125,19 @@ class _LoginViewState extends State<LoginView> {
               },
               child: const Text('Login')),
           TextButton(
-              onPressed: () {
-                // destroy everything on the screen
-                // and change it with build function
-                // so it needs a new scaffold
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  registerRoute,
-                  (route) =>
-                      false, // remove everything. don't care about the routes.
-                  // just go to the register view
-                );
-              },
-              child: const Text("Not registered yet? Register here!"))
+            onPressed: () {
+              // destroy everything on the screen
+              // and change it with build function
+              // so it needs a new scaffold
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                registerRoute,
+                (route) =>
+                    false, // remove everything. don't care about the routes.
+                // just go to the register view
+              );
+            },
+            child: const Text("Not registered yet? Register here!"),
+          )
         ],
       ),
     );

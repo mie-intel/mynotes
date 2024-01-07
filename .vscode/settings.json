@@ -1,5 +1,5 @@
 {
   "editor.fontFamily": "Menlo, 'JetBrains Mono', Consolas, 'Courier New', monospace",
   "debug.console.fontFamily": "Menlo, 'JetBrains Mono', Consolas, 'Courier New', monospace",
-  "terminal.integrated.fontFamily": "Menlo, 'JetBrains Mono', Consolas, 'Courier New', monospace"
+  "terminal.integrated.fontFamily": "'MesloLGM Nerd Font', Menlo, 'JetBrains Mono', Consolas, 'Courier New', monospace"
 }
