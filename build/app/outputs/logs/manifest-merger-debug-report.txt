@@ -71,6 +71,8 @@ MERGED from [:firebase_analytics] D:\SOSKOD\course\flutter\chapter_7_first_proje
 MERGED from [:firebase_auth] D:\SOSKOD\course\flutter\chapter_7_first_project\mynotes\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:cloud_firestore] D:\SOSKOD\course\flutter\chapter_7_first_project\mynotes\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:firebase_core] D:\SOSKOD\course\flutter\chapter_7_first_project\mynotes\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
+MERGED from [:sqflite] D:\SOSKOD\course\flutter\chapter_7_first_project\mynotes\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:path_provider_android] D:\SOSKOD\course\flutter\chapter_7_first_project\mynotes\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-auth:22.3.0] C:\Users\Asus\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:17:1-75:12
 MERGED from [com.google.firebase:firebase-firestore:24.9.1] C:\Users\Asus\.gradle\caches\transforms-3\cdcc585bf5bfb7b79234bf5eb0173e42\transformed\jetified-firebase-firestore-24.9.1\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.firebase:firebase-analytics:21.5.0] C:\Users\Asus\.gradle\caches\transforms-3\b65eae732b6aeb7d9ab18b671b009b99\transformed\jetified-firebase-analytics-21.5.0\AndroidManifest.xml:2:1-9:12
@@ -155,6 +157,10 @@ MERGED from [:cloud_firestore] D:\SOSKOD\course\flutter\chapter_7_first_project\
 MERGED from [:cloud_firestore] D:\SOSKOD\course\flutter\chapter_7_first_project\mynotes\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] D:\SOSKOD\course\flutter\chapter_7_first_project\mynotes\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] D:\SOSKOD\course\flutter\chapter_7_first_project\mynotes\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] D:\SOSKOD\course\flutter\chapter_7_first_project\mynotes\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] D:\SOSKOD\course\flutter\chapter_7_first_project\mynotes\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] D:\SOSKOD\course\flutter\chapter_7_first_project\mynotes\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] D:\SOSKOD\course\flutter\chapter_7_first_project\mynotes\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-auth:22.3.0] C:\Users\Asus\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:21:5-23:64
 MERGED from [com.google.firebase:firebase-auth:22.3.0] C:\Users\Asus\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:21:5-23:64
 MERGED from [com.google.firebase:firebase-firestore:24.9.1] C:\Users\Asus\.gradle\caches\transforms-3\cdcc585bf5bfb7b79234bf5eb0173e42\transformed\jetified-firebase-firestore-24.9.1\AndroidManifest.xml:6:5-44
