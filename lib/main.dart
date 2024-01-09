@@ -36,22 +36,6 @@ class HomePage extends StatelessWidget {
           case ConnectionState.done:
             // Get current user
             final user = AuthService.firebase().currentUser;
-
-            // print(user);
-            // if (user?.emailVerified ?? false) {
-            //   // print("You are verified");
-            //   return const Text("Done");
-            // } else {
-            //   // print("You need to verified first!");
-            //   // numpuk jadi stack
-            //   //Navigator.of(context).push(MaterialPageRoute(
-            //   //    builder: (context) => const VerifyEmailView()));
-            //   // cuman ngereturn contentnya aja
-            //   return const VerifyEmailView();
-            // }
-            // -> after verify, just log in once more to make sure
-            /// firebase update it's database
-
             if (user != null) {
               if (user.isEmailVerified) {
                 devtools.log('Hello world!');
@@ -70,3 +54,20 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+/*
+  print(user);
+  if (user?.emailVerified ?? false) {
+    // print("You are verified");
+    return const Text("Done");
+  } else {
+    // print("You need to verified first!");
+    // numpuk jadi stack
+    //Navigator.of(context).push(MaterialPageRoute(
+    //    builder: (context) => const VerifyEmailView()));
+    // cuman ngereturn contentnya aja
+    return const VerifyEmailView();
+  }
+  -> after verify, just log in once more to make sure
+   firebase update it's database
+*/

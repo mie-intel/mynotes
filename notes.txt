@@ -1,4 +1,4 @@
-Notes (16:56:52)
+Notes (18:56:30)
 
 Command
     flutter create --org id.<domain name> <application name>
@@ -113,3 +113,19 @@ Widget flutter binding
 Installing dev_dependencies
     test
         flutter pub add test --dev
+
+CRUD
+    => use SQLite
+    => use DB Browser
+
+DB Browser
+    Field
+    Type
+    NN => Not Null
+    PK => Primary Key (unique key) (should be queried)
+    AI => Auto Increament (create a unique id automatically)
+
+Add dependencies
+    sqflite, => database
+    path_provider, => access directory on phone
+    path => this too
