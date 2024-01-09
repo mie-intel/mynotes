@@ -1,4 +1,4 @@
-Notes (15:30:49)
+Notes (16:56:52)
 
 Command
     flutter create --org id.<domain name> <application name>
@@ -109,3 +109,7 @@ Configuration not found
 Widget flutter binding
     Future builder => do the Future
         then return a widget on builder
+
+Installing dev_dependencies
+    test
+        flutter pub add test --dev
