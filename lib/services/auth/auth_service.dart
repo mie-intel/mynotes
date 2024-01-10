@@ -10,7 +10,7 @@ class AuthService implements AuthProvider {
   const AuthService(this.provider);
 
   // it use to make us able to user all function in FirebaseAuthProvider
-  // just by using AuthService.firebase
+  // just by using AuthService.firebase()
   factory AuthService.firebase() => AuthService(FirebaseAuthProvider());
 
   @override
